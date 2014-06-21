@@ -5,16 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="8"
         android:targetSdkVersion="19" />
-
-    <permission
-        android:name="com.peter.yin"
-        android:protectionLevel="normal" >
-    </permission>
-
-    <uses-permission android:name="com.peter.yang" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -32,16 +24,12 @@
         </activity>
 
         <service
-            android:name="com.peter.yin.YinService"
-            android:exported="true"
-            android:permission="com.peter.yin" >
-        </service>
-
-        <receiver android:name="com.peter.yin.NetworkChangedReceiver" >
+            android:name=".YinService"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="com.peter.yin" />
             </intent-filter>
-        </receiver>
+        </service>
     </application>
 
 </manifest>

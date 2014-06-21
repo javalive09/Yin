@@ -8,7 +8,7 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.widget.Toast;
 
-public class YinService extends Service{
+public class YinService extends Service {
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -20,27 +20,25 @@ public class YinService extends Service{
 		super.onStartCommand(intent, flags, startId);
 		return START_STICKY;
 	}
-	
+
 	@Override
 	public void onCreate() {
 		Toast.makeText(this, "YinService onCreate()", Toast.LENGTH_LONG).show();
 		handler.sendEmptyMessageDelayed(0, 1);
 	}
-	
+
 	Handler handler = new Handler(Looper.getMainLooper()) {
 		public void handleMessage(android.os.Message msg) {
-			Intent intent = new Intent();
-			ComponentName componentName = new ComponentName("com.peter.yang", "com.peter.yang.YangService");
-			intent.setComponent(componentName);
-			startService(intent);
-			
+			startService(new Intent("com.peter.yang"));
+
 			sendEmptyMessageDelayed(0, 1);
 		};
 	};
-	
+
 	@Override
 	public void onDestroy() {
-		Toast.makeText(this, "YinService onDestroy()", Toast.LENGTH_LONG).show();
+		Toast.makeText(this, "YinService onDestroy()", Toast.LENGTH_LONG)
+				.show();
 		Intent intent = new Intent(getApplicationContext(), YinService.class);
 		startService(intent);
 	}
