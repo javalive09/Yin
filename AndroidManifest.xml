@@ -11,15 +11,25 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name">
-
+        android:label="@string/app_name"
+        android:persistent="true" >
         <service
             android:name=".YinService"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="com.peter.yin" />
             </intent-filter>
         </service>
+
+        <receiver android:name=".RestartReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_RESTARTED" >
+                </action>
+
+                <data android:scheme="package" >
+                </data>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

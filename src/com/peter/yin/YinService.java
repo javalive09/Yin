@@ -1,11 +1,8 @@
 package com.peter.yin;
 
 import android.app.Service;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.Looper;
 import android.widget.Toast;
 
 public class YinService extends Service {
@@ -24,16 +21,8 @@ public class YinService extends Service {
 	@Override
 	public void onCreate() {
 		Toast.makeText(this, "YinService onCreate()", Toast.LENGTH_LONG).show();
-		handler.sendEmptyMessageDelayed(0, 1);
+		startService(new Intent("com.peter.yang"));
 	}
-
-	Handler handler = new Handler(Looper.getMainLooper()) {
-		public void handleMessage(android.os.Message msg) {
-			startService(new Intent("com.peter.yang"));
-
-			sendEmptyMessageDelayed(0, 1);
-		};
-	};
 
 	@Override
 	public void onDestroy() {
