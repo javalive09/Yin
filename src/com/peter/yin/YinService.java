@@ -7,6 +7,9 @@ import android.widget.Toast;
 
 public class YinService extends Service {
 
+	public static final String TARGET_PACKAGE_NAME = "com.peter.yang";
+	public static final String TARGET_ACTION = "com.peter.yang";
+	
 	@Override
 	public IBinder onBind(Intent intent) {
 		return null;
@@ -21,7 +24,7 @@ public class YinService extends Service {
 	@Override
 	public void onCreate() {
 		Toast.makeText(this, "YinService onCreate()", Toast.LENGTH_SHORT).show();
-		startService(new Intent("com.peter.yang"));
+		startService(new Intent(TARGET_ACTION));
 	}
 
 	@Override
