@@ -15,7 +15,7 @@ public class YinService extends Service {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		Toast.makeText(this, "YinService onStartCommand()", Toast.LENGTH_SHORT).show();
-		return START_NOT_STICKY;
+		return START_STICKY;
 	}
 
 	@Override
