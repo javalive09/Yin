@@ -7,6 +7,8 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
+    
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
         android:allowBackup="true"
@@ -23,11 +25,9 @@
 
         <receiver android:name=".RestartReceiver" >
             <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_RESTARTED" >
-                </action>
-
-                <data android:scheme="package" >
-                </data>
+                <action android:name="android.intent.action.PACKAGE_RESTARTED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <data android:scheme="package" />
             </intent-filter>
         </receiver>
     </application>

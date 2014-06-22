@@ -14,20 +14,19 @@ public class YinService extends Service {
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		super.onStartCommand(intent, flags, startId);
-		return START_STICKY;
+		Toast.makeText(this, "YinService onStartCommand()", Toast.LENGTH_SHORT).show();
+		return START_NOT_STICKY;
 	}
 
 	@Override
 	public void onCreate() {
-		Toast.makeText(this, "YinService onCreate()", Toast.LENGTH_LONG).show();
+		Toast.makeText(this, "YinService onCreate()", Toast.LENGTH_SHORT).show();
 		startService(new Intent("com.peter.yang"));
 	}
 
 	@Override
 	public void onDestroy() {
-		Toast.makeText(this, "YinService onDestroy()", Toast.LENGTH_LONG)
-				.show();
+		Toast.makeText(this, "YinService onDestroy()", Toast.LENGTH_SHORT).show();
 		Intent intent = new Intent(getApplicationContext(), YinService.class);
 		startService(intent);
 	}
